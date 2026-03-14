@@ -81,7 +81,7 @@ where python
 If everything is correct, you should see a path similar to:
 
 ```bat
-C:\Users\Utilizador\TesteSoPython\Beep\.venv\Scripts\python.exe
+...\Beep\.venv\Scripts\python.exe
 ```
 
 To recreate the environment from `requirements.txt`, run:
@@ -139,7 +139,7 @@ py main.py phone
 Example output:
 
 ```bat
-(.venv) C:\Users\Utilizador\TesteSoPython\Beep> py main.py beep
+(.venv) ...\Beep> py main.py beep
 Hello beep
 A tocar som...
 ```
