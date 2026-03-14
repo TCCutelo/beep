@@ -1,38 +1,22 @@
 # BEEP
 
-## Como executar rapidamente
+## 1. Project description
 
-```bat
-py -m venv .venv
-.\.venv\Scripts\Activate
-pip install -r requirements.txt
-py main.py beep
-```
+BEEP is a simple Python project for playing sounds on Windows with `winsound`.
 
-Projeto simples em Python para reproduzir sons no Windows com `winsound`.
+This project is useful for practicing:
+- code organization across files
+- Object-Oriented Programming
+- abstract classes and polymorphism
+- command-line execution with Typer
 
-Este projeto serve para praticar:
-- organizacao de codigo por ficheiros
-- Programacao Orientada a Objetos
-- classes abstratas e polimorfismo
-- execucao de programas pela linha de comandos
+The application flow is simple:
+1. `main.py` receives the sound name.
+2. It creates the view and the controller.
+3. It selects the correct sound class.
+4. It plays the selected sound.
 
-## O que faz
-
-A aplicacao permite tocar diferentes sons:
-- `beep`
-- `hino`
-- `ode`
-- `modem`
-- `phone`
-
-O fluxo e simples:
-1. `main.py` recebe o nome do som
-2. cria a view e o controller
-3. escolhe a classe de som correta
-4. manda tocar o som
-
-## Estrutura do projeto
+## 2. Project structure
 
 ```text
 Beep/
@@ -40,7 +24,6 @@ Beep/
 |-- sound_controller.py
 |-- console_view.py
 |-- requirements.txt
-|-- criar_amb_virtual.md
 |-- model/
 |   |-- sound_base.py
 |   |-- beep_sound.py
@@ -50,79 +33,99 @@ Beep/
 |   `-- phone_sound.py
 ```
 
-### Ficheiros principais
+Main files:
+- `main.py`: application entry point
+- `sound_controller.py`: coordinates execution
+- `console_view.py`: prints messages to the console
+- `model/sound_base.py`: abstract base class for sounds
+- `model/*.py`: concrete sound implementations
+- `requirements.txt`: project dependencies
 
-- `main.py`: ponto de entrada da aplicacao
-- `sound_controller.py`: coordena a execucao
-- `console_view.py`: mostra mensagens na consola
-- `model/sound_base.py`: classe base abstrata para os sons
-- `model/*.py`: implementacoes concretas dos sons
-- `requirements.txt`: dependencias do projeto
-
-## Requisitos
+## 3. Requirements
 
 - Windows
 - Python 3.x
 - `typer==0.21.1`
 
-> Nota: o projeto usa `winsound`, por isso e especifico de Windows.
+> Note: this project uses `winsound`, so it is Windows-only.
 
-## Criar ambiente virtual no Windows
+## 4. Quick start
 
-Na pasta do projeto:
+```bat
+py -m venv .venv
+.\.venv\Scripts\Activate
+pip install -r requirements.txt
+py main.py beep
+```
+
+## 5. Create virtual environment
+
+Create a virtual environment named `.venv` in the project folder:
 
 ```bat
 py -m venv .venv
 ```
 
-Ativar o ambiente virtual:
+Activate the virtual environment:
 
 ```bat
 .\.venv\Scripts\Activate
 ```
 
-Confirmar que esta ativo:
+Check that the virtual environment is active:
 
 ```bat
 where python
 ```
 
-Se estiver correto, devera aparecer um caminho semelhante a:
+If everything is correct, you should see a path similar to:
 
 ```bat
 C:\Users\Utilizador\TesteSoPython\Beep\.venv\Scripts\python.exe
 ```
 
-## Instalar dependencias
+To recreate the environment from `requirements.txt`, run:
 
-Com o ambiente virtual ativo:
+```bat
+py -m venv .venv
+.\.venv\Scripts\Activate
+pip install -r requirements.txt
+```
+
+To deactivate the virtual environment:
+
+```bat
+deactivate
+```
+
+## 6. Install dependencies
+
+With the virtual environment active, install the project dependencies:
 
 ```bat
 pip install -r requirements.txt
 ```
 
-## Executar o projeto
+## 7. Run the project
 
-Executar com o som por defeito:
+The CLI uses Typer in `main.py`.
+
+`sound_name` is an optional positional argument.
+If no argument is provided, the program uses `beep` by default.
+
+Run with the default sound:
 
 ```bat
 py main.py
 ```
 
-Executar um som especifico:
+Run with a specific sound:
 
 ```bat
 py main.py <som>
 ```
 
-Sons confirmados no codigo:
-- `beep`
-- `hino`
-- `ode`
-- `modem`
-- `phone`
-
-## Exemplos de comandos
+Real examples from this project:
 
 ```bat
 py main.py
@@ -133,7 +136,7 @@ py main.py modem
 py main.py phone
 ```
 
-Exemplo de execucao:
+Example output:
 
 ```bat
 (.venv) C:\Users\Utilizador\TesteSoPython\Beep> py main.py beep
@@ -141,46 +144,38 @@ Hello beep
 A tocar som...
 ```
 
-## Typer
+## 8. Available sounds
 
-O projeto usa `Typer` em `main.py`, atraves de `typer.run(main)`.
+Confirmed in the current code:
+- `beep`
+- `hino`
+- `ode`
+- `modem`
+- `phone`
 
-O parametro `sound_name` e um argumento posicional opcional.
-Se nenhum som for indicado, o programa usa `beep` por defeito.
+If an invalid sound is used, `main.py` raises an error with the valid options.
 
-Exemplos validos:
-
-```bat
-py main.py
-py main.py <som>
-py main.py ode
-py main.py phone
-```
-
-O comando abaixo e **provavel**, mas nao foi confirmado por execucao real neste ambiente:
-
-```bat
-py main.py --help
-```
-
-## Erros comuns
+## 9. Common errors
 
 ### `ModuleNotFoundError: No module named 'typer'`
-Instalar as dependencias:
+
+Install the dependencies:
 
 ```bat
 pip install -r requirements.txt
 ```
 
-### `python` ou `py` nao e reconhecido
-Confirmar a instalacao do Python:
+### `python` or `py` is not recognized
+
+Check the Python installation:
 
 ```bat
 py --version
 ```
 
-### O ambiente virtual nao funciona
-Recriar o ambiente virtual:
+### The virtual environment is not working
+
+Recreate it:
 
 ```bat
 py -m venv .venv
@@ -188,9 +183,6 @@ py -m venv .venv
 pip install -r requirements.txt
 ```
 
-### Erro com `winsound`
-O projeto deve ser executado em Windows.
+### Error with `winsound`
 
----
-
-Projeto indicado para iniciantes que querem praticar Python, POO e uma pequena aplicacao de consola.
+This project must be run on Windows.
